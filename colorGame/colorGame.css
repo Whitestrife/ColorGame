@@ -27,7 +27,7 @@ button{
 
 button:hover{
 	color:white;
-	background:background-color: rgb(30,30,30);
+	background-color: rgb(30,30,30);
 }
 
 #message{
@@ -42,7 +42,6 @@ button:hover{
 	font-weight: normal;
 	font-size: 200%;
 }
-
 
 .colorTile{
 	background: purple;
@@ -68,6 +67,3 @@ button:hover{
 	margin: 0;
 	font-family: "Comic Sans MS";
 }
-
-
-

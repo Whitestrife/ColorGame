@@ -1,3 +1,5 @@
+//TODO-Refactor and Reorganize whole JS page. Fix redundancies
+
 var rgbGuess = document.querySelectorAll("span");
 var colors = document.querySelectorAll(".colorTile");
 var rgbBool = false;
@@ -33,7 +35,6 @@ function gameSetup(){
 	}
 
 	for(var i = 0; i < amountSquares; i++){
-
 		rgbTriplet = [Math.round((Math.random(0,257)*256)),Math.round((Math.random(0,257)*256)),Math.round((Math.random(0,257)*256))];
 		if(rgbBool === false){
 			if(Math.random() >= .500){
@@ -42,7 +43,6 @@ function gameSetup(){
 			}
 		}
 		colors[i].style.backgroundColor = 'rgb('+rgbTriplet[0]+','+rgbTriplet[1]+','+rgbTriplet[2]+')';
-
 	}
 	if(rgbBool === false){
 		createAnswerColor();
@@ -67,8 +67,6 @@ for(var i = 0; i < colors.length; i++){
 		}
 	})
 }
-
-
 //TODO-Consolidate/Refactor this code. Consider using classList.add/remove and create general functionality
 resetGameButton.addEventListener("click", gameSetup);
 easyButton.addEventListener("click", function(){
