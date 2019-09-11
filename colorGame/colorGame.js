@@ -6,30 +6,31 @@ var rgbBool = false;
 var messageDisplay = document.querySelector("#message");
 var bodyBackground = 'rgb(' + 30 +',' + 30 + ',' + 30 +')';
 var answerColor = 'rgb(' + 0 +',' + 0 + ',' + 0 +')';
-var rgbTriplet = [0,0,0];
+var rgbTriplet = [];
 var resetGameButton = document.querySelector("#resetGame");
 var modeButtons = document.querySelectorAll(".mode");
 var difficulty = "easy";
 modeButtons[0].classList.add("selected");
 resetGameButton.style.backgroundColor = "white";
 
-for(var i = 0; i < modeButtons.length; i++){
-	modeButtons[i].addEventListener("click", function(){
-		modeButtons[0].classList.remove("selected");
-		modeButtons[1].classList.remove("selected");
-		this.classList.add("selected");
-		if(this === modeButtons[0]){
-			difficulty = "easy";
-		}else {
-			difficulty = "hard";
-		}
-		gameSetup();		
-	})
+init();
+
+function init(){
+	gameSetup();
+	for(var i = 0; i < modeButtons.length; i++){
+		modeButtons[i].addEventListener("click", function(){
+			modeButtons[0].classList.remove("selected");
+			modeButtons[1].classList.remove("selected");
+			this.classList.add("selected");
+			if(this === modeButtons[0]){
+				difficulty = "easy";
+			}else {
+				difficulty = "hard";
+			}
+			gameSetup();		
+		})
+	}
 }
-
-colors[0].style.backgroundColor = "blue";
-
-gameSetup();
 
 function gameSetup(){
 	messageDisplay.textContent = "";
