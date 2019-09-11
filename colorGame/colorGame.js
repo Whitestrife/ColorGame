@@ -1,4 +1,4 @@
-//TODO-Refactor and Reorganize whole JS page. Fix redundancies
+//TODO-Refactor/Add a prompt of some kind to show when you win
 
 var rgbGuess = document.querySelectorAll("span");
 var colors = document.querySelectorAll(".colorTile");
@@ -8,12 +8,24 @@ var bodyBackground = 'rgb(' + 30 +',' + 30 + ',' + 30 +')';
 var answerColor = 'rgb(' + 0 +',' + 0 + ',' + 0 +')';
 var rgbTriplet = [0,0,0];
 var resetGameButton = document.querySelector("#resetGame");
-var easyButton = document.querySelector("#easy");
-var hardButton = document.querySelector("#hard");
+var modeButtons = document.querySelectorAll(".mode");
 var difficulty = "easy";
+modeButtons[0].classList.add("selected");
 resetGameButton.style.backgroundColor = "white";
-easyButton.style.backgroundColor = 'rgb(' + 0 +',' + 140 + ',' + 200 +')';
-hardButton.style.backgroundColor = "white";
+
+for(var i = 0; i < modeButtons.length; i++){
+	modeButtons[i].addEventListener("click", function(){
+		modeButtons[0].classList.remove("selected");
+		modeButtons[1].classList.remove("selected");
+		this.classList.add("selected");
+		if(this === modeButtons[0]){
+			difficulty = "easy";
+		}else {
+			difficulty = "hard";
+		}
+		gameSetup();		
+	})
+}
 
 colors[0].style.backgroundColor = "blue";
 
@@ -67,37 +79,9 @@ for(var i = 0; i < colors.length; i++){
 		}
 	})
 }
-//TODO-Consolidate/Refactor this code. Consider using classList.add/remove and create general functionality
+
 resetGameButton.addEventListener("click", gameSetup);
-easyButton.addEventListener("click", function(){
-	difficulty = "easy";
-	gameSetup();
-	easyButton.style.backgroundColor = 'rgb(' + 0 +',' + 140 + ',' + 200 +')';
-	hardButton.style.backgroundColor = "white";
-});
-easyButton.addEventListener("mouseover", function(){
-	easyButton.style.backgroundColor = 'rgb(' + 0 +',' + 140 + ',' + 200 +')';
-})
-easyButton.addEventListener("mouseout", function(){
-	if(difficulty !== "easy"){
-	easyButton.style.backgroundColor = "white";
-	}
-	
-})
-hardButton.addEventListener("click", function(){
-	difficulty = "hard";
-	gameSetup();
-	hardButton.style.backgroundColor = 'rgb(' + 0 +',' + 140 + ',' + 200 +')';
-	easyButton.style.backgroundColor = "white";
-});
-hardButton.addEventListener("mouseover", function(){
-	hardButton.style.backgroundColor = 'rgb(' + 0 +',' + 140 + ',' + 200 +')';
-})
-hardButton.addEventListener("mouseout", function(){
-	if(difficulty !== "hard"){
-	hardButton.style.backgroundColor = "white";
-	}
-})
+
 resetGameButton.addEventListener("mouseover", function(){
 	resetGameButton.style.backgroundColor = 'rgb(' + 0 +',' + 140 + ',' + 200 +')';
 })
